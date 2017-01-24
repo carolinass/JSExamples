@@ -1,0 +1,55 @@
+<html>
+	<head></head>
+	<body>
+
+		<h1>JavaScript Event Delegation</h1>
+
+		<h3>Let's suppose you need to add an event listener to each item of an unordered list in order to perform some action when the user interacts with the element.</h3>
+
+		<h2>Default Solution (not efficient at all)</h2>
+
+		<ul id="todo-app1">
+			<li class="item1">Walk the dog</li>
+			<li class="item1">Pay bills</li>
+			<li class="item1">Make dinner</li>
+			<li class="item1">Code for one hour</li>
+		</ul>
+
+		<h2>Event Delegation (more efficient)</h2>
+
+		<ul id="todo-app2">
+			<li class="item2">Walk the dog</li>
+			<li class="item2">Pay bills</li>
+			<li class="item2">Make dinner</li>
+			<li class="item2">Code for one hour</li>
+		</ul>
+
+		<script>
+
+			document.addEventListener('DOMContentLoaded', function(){
+
+				// Default solution
+				var app1 = document.getElementById('todo-app1');
+				var items1 = document.getElementsByClassName('item1');
+				for (let item of items1) {
+					item.addEventListener('click', function() {
+						alert("Hello IT! I've got the element: " + item.innerHTML);
+					});
+				}
+
+				// Event Delegation
+				var app2 = document.getElementById('todo-app2');
+				
+				app2.addEventListener('click', function(e) {
+					if (e.target && e.target.nodeName === 'LI') {
+						let item = e.target;
+						alert ("Hello IT! I've got the element: " + item.innerHTML);
+					}
+				});
+
+
+			});
+		</script>
+
+	</body>
+</html>
