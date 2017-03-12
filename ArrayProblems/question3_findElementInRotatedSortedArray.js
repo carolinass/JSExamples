@@ -5,6 +5,10 @@
 	You may assume no duplicate exists in the array. For instance, find 7 in [4, 5, 6, 7, 0, 1, 2].
 */
 function findElement(arr, n) {
+	if(arr === null || arr.length === 0) {
+		return;
+	}
+
 	var start = 0;
 	var end = arr.length - 1;
 	var mid = 0;
@@ -34,6 +38,6 @@ function findElement(arr, n) {
 			end = end - 1;
 		}
 	}
-	
+
 	return -1;
 };

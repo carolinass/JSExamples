@@ -5,6 +5,10 @@
 	Please note that k is larger than the length of the array.
 */
 function rotateArray(arr, k) {
+	if(arr === null || arr.length === 0) {
+		return;
+	}
+	
 	arr = reverseSubarray(arr, 0, arr.length - 1 - k);
 	arr = reverseSubarray(arr, arr.length - k, arr.length - 1);
 	return reverseSubarray(arr, 0, arr.length - 1);
